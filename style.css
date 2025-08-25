@@ -1,0 +1,105 @@
+<style>
+  /* Estilos para o corpo da página */
+  body {
+    background: #0a2342; /* Fundo azul escuro */
+    color: #c7d2fe; /* Cor do texto em tom claro */
+    font-family: Arial, sans-serif; /* Fonte Arial */
+    margin: 0; padding: 20px; /* Sem margem e padding de 20px em volta */
+  }
+
+  /* Estilo do título principal */
+  h1 {
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 30px; /* Espaço abaixo do título */
+    color: #b1c2f0; /* Cor azul clara */
+  }
+
+  /* Container da galeria usando grid para layout */
+  .galeria {
+    display: grid; /* Usando CSS Grid */
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas iguais na grid */
+    gap: 15px; /* Espaçamento de 15px entre as imagens */
+    max-width: 1200px; /* Largura máxima da galeria */
+    margin: 0 auto; /* Centraliza horizontalmente */
+  }
+
+  /* Cada item da galeria */
+  .item {
+    position: relative; /* Posição relativa para possível overlay */
+    cursor: pointer; /* Cursor muda para indicar clique */
+  }
+
+  /* Estilo das imagens */
+  .item img {
+    width: 100%; /* Largura total do container .item */
+    height: 200px; /* Altura fixa */
+    object-fit: cover; /* Corta a imagem para cobrir área */
+    border-radius: 8px; /* Bordas arredondadas */
+    transition: transform 0.3s ease; /* Transição suave para transformações */
+    box-shadow: 0 0 5px #3563e9; /* Sombra azul suave */
+  }
+
+  /* Estilo do nome abaixo da imagem */
+  .nome {
+    margin-top: 6px; /* Espaço acima do texto */
+    font-size: 14px; /* Tamanho da fonte */
+    text-align: center; /* Centraliza o texto */
+    color: #a8b9ff; /* Cor azul clara */
+  }
+
+  /* Estilo do overlay que aparece ao ampliar a imagem */
+  .overlay {
+    position: fixed; /* Fixa na tela, cobrindo tudo */
+    top: 0; left: 0; right: 0; bottom: 0; /* Ocupa toda a tela */
+    background: rgba(10, 35, 66, 0.85); /* Fundo semi-transparente azul escuro */
+    display: flex; /* Usado flexbox para centralizar */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    z-index: 9999; /* Fica acima de tudo */
+
+    opacity: 0; /* Inicialmente invisível */
+    visibility: hidden; /* Não interage com o mouse */
+    transition: opacity 0.4s ease; /* Transição suave para aparecer */
+  }
+
+  /* Quando o overlay está visível */
+  .overlay.mostrar {
+    opacity: 1; /* Opacidade total */
+    visibility: visible; /* Visível e interativo */
+  }
+
+  /* Estilo da imagem ampliada dentro do overlay */
+  .overlay img {
+    max-width: 90vw; /* Máximo 90% da largura da viewport */
+    max-height: 80vh; /* Máximo 80% da altura da viewport */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 0 20px #6190f8; /* Sombra azul maior */
+
+    transform: scale(0.7); /* Inicialmente menor */
+    transition: transform 0.4s ease; /* Transição suave para aumentar */
+  }
+
+  /* Quando o overlay está ativo, imagem escala para 1 (normal) */
+  .overlay.mostrar img {
+    transform: scale(1);
+  }
+
+  /* Botão para fechar o overlay */
+  .fechar-btn {
+    position: fixed; /* Fixa na tela */
+    top: 20px; /* 20px do topo */
+    right: 30px; /* 30px da direita */
+    font-size: 40px; /* Tamanho grande do "×" */
+    color: #b1c2f0; /* Cor azul clara */
+    background: transparent; /* Fundo transparente */
+    border: none; /* Sem borda */
+    cursor: pointer; /* Cursor de clique */
+    z-index: 10000; /* Fica acima do overlay */
+    transition: color 0.3s ease; /* Transição na cor */
+  }
+
+  /* Cor do botão muda ao passar o mouse */
+  .fechar-btn:hover {
+    color: #e0e6ff;
+  }
+</style>
